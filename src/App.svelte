@@ -1,22 +1,20 @@
 <script>
     import Todo from './todo.svelte'
     import Sort from './sortchoice.svelte'
-
-    let sort = false;
-    let todo = false;
+	import { fade, slide, scale } from 'svelte/transition'
 </script>
 
 <div class="container">
-	<section>
+	<section out:fade class="one">
 		<Sort />
 	</section>
-	<section>
+	<section out:fade class="two">
 		<Todo />
 	</section>
 </div>
-git 
+
 <style>
-	* {
+	:global(body) {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;

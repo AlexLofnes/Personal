@@ -267,29 +267,19 @@
         background-color: #161616;
         margin: 0;
     }
-
-    @font-face{
-    font-family: 'Atkinson';
-    src: url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap) format('ttf');
-    }
-
-    @font-face{
-        font-family: 'AtkinsonBold';
-        src: url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap) format('ttf');
-    }
     
     #word {
         position: absolute;
         color: #161616;
-        font-family: AtkinsonBold, sans-serif;
+        font-family: sans-serif;
         bottom: 450px;
         left: 35%;
         font-size: 100px;
     }
     
-    h1, h2 {
+    h2 {
         color: white;
-        font-family: Atkinson, sans-serif;
+        font-family: sans-serif;
     }
     
     div {
