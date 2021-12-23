@@ -238,6 +238,7 @@
     }   
 
     function shuffle() {
+        completed = false;
         arr = [];
         for (let i = 0; i < screenWidth; i++) {
         let num = Math.random() * 100 + 1;
