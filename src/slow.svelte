@@ -1,14 +1,15 @@
 <script>
     let arr = [];
-    let timeTaken, d, startTime, endTime;
+    let timeTaken, d, startTime, endTime, completed = false;
     let screenWidth = window.innerWidth-50;
 
     function reload() {
         location.reload();
         return false;
     }
+
         
-        async function bubbleSort() {
+    async function bubbleSort() {
         d = new Date();
         startTime = d.getTime()/1000;
         
@@ -26,6 +27,7 @@
         d = new Date();
         endTime = d.getTime()/1000;
         timeTaken = endTime - startTime;
+        completed = true;
     }
 
     async function insertionSort() {
@@ -45,6 +47,7 @@
         d = new Date();
         endTime = d.getTime()/1000;
         timeTaken = endTime - startTime;
+        completed = true;
     }
 
     async function gnomeSort() {
@@ -64,6 +67,7 @@
     d = new Date();
     endTime = d.getTime()/1000;
     timeTaken = endTime-startTime;
+    completed = true;
     }
 
     async function selectionSort() {
@@ -88,7 +92,8 @@
         }
         d = new Date();
         endTime = d.getTime()/1000;
-        timeTaken = endTime-startTime
+        timeTaken = endTime-startTime;
+        completed = true;
     }
 
     async function radixBucketSort () {
@@ -156,7 +161,8 @@
         }
     d = new Date();
         endTime = d.getTime()/1000;
-        timeTaken = endTime-startTime
+        timeTaken = endTime-startTime;
+        completed = true;
     }
 
     async function flashSort() {
@@ -220,6 +226,7 @@
                 ++move;
                 await new Promise((r) => setTimeout(r, 0.1));
             }
+            completed = true;
         }
     
         //insertion
@@ -233,10 +240,12 @@
         }
         d = new Date();
         endTime = d.getTime()/1000;
-        timeTaken = endTime-startTime
+        timeTaken = endTime-startTime;
+        completed = true;
     }   
 
     function shuffle() {
+        completed = false;
         arr = [];
         for (let i = 0; i < screenWidth; i++) {
         let num = Math.random() * 100 + 1;
@@ -260,7 +269,11 @@
 <br>
 
 {#each arr as el, i}
-    <div id={i} style="position: relative;height: {el * 5}px;" />
+    {#if completed}
+        <div id={i} style="position: relative;height: {el * 5}px; background: #52D452;" />
+    {:else}
+        <div id={i} style="position: relative;height: {el * 5}px; background: #eeeeee;" />
+    {/if}
 {/each}
 
 <input type="number" placeholder="Number of elements" bind:value={screenWidth} on:change={shuffle}>
@@ -292,13 +305,12 @@
         font-size: 100px;
     }
     
-    h1, h2 {
+    h2 {
         color: white;
         font-family: Atkinson, sans-serif;
     }
     
     div {
-        background: #eeeeee;
         width: 1px;
         display: inline-block;
         margin: 0px;
