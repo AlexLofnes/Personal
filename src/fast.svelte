@@ -241,7 +241,7 @@
         completed = false;
         arr = [];
         for (let i = 1; i < screenWidth; i++) {
-            let num = i/10;
+            let num = i/12;
             arr.push(num);
         }
 
