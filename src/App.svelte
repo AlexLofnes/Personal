@@ -1,7 +1,7 @@
 <script>
     import Todo from './todo.svelte'
     import Sort from './sortchoice.svelte'
-	import { fade, slide, scale } from 'svelte/transition'
+	import { fade} from 'svelte/transition'
 </script>
 
 <div class="container">

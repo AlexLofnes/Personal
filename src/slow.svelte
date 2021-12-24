@@ -247,10 +247,19 @@
     function shuffle() {
         completed = false;
         arr = [];
-        for (let i = 0; i < screenWidth; i++) {
-        let num = Math.random() * 100 + 1;
-        arr.push(Math.floor(num));
+        for (let i = 1; i < screenWidth; i++) {
+            let num = i/10;
+            arr.push(num);
         }
+
+        console.log(arr, Math.max(...arr), screenWidth/100)
+        let currentIndex = arr.length,  randomIndex;
+        while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+        }
+
     }
     
     shuffle()
