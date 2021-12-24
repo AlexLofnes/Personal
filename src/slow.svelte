@@ -1,6 +1,6 @@
 <script>
     let arr = [];
-    let timeTaken, d, startTime, endTime, completed = false;
+    let timeTaken, d, startTime, endTime, completed = false, elWidth = 1;
     let screenWidth = window.innerWidth-50;
 
     function reload() {
@@ -40,9 +40,9 @@
         let j;
         for (j = i - 1; j >= 0 && arr[j] > current; j--) {
             arr[j + 1] = arr[j];
+            await new Promise((r) => setTimeout(r, 1));
         }
         arr[j + 1] = current;
-        await new Promise((r) => setTimeout(r, 1));
         }
         d = new Date();
         endTime = d.getTime()/1000;
@@ -234,13 +234,14 @@
 
 {#each arr as el, i}
     {#if completed}
-        <div id={i} style="position: relative;height: {el * 5}px; background: #52D452;" />
+        <div id={i} style="position: relative;height: {el * 5}px; width: {elWidth}px; background: #52D452;" />
     {:else}
-        <div id={i} style="position: relative;height: {el * 5}px; background: #eeeeee;" />
+        <div id={i} style="position: relative;height: {el * 5}px; width: {elWidth}px; background: #eeeeee;" />
     {/if}
 {/each}
 
 <input type="number" placeholder="Number of elements" bind:value={screenWidth} on:change={shuffle}>
+<input type="number" placeholder="Width of elements" bind:value={elWidth} on:change={shuffle}>
 
 <h2>It took: {timeTaken} seconds to sort {screenWidth} elements</h2>
         
