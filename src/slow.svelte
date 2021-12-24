@@ -226,7 +226,6 @@
                 ++move;
                 await new Promise((r) => setTimeout(r, 0.1));
             }
-            completed = true;
         }
     
         //insertion
@@ -242,7 +241,7 @@
         endTime = d.getTime()/1000;
         timeTaken = endTime-startTime;
         completed = true;
-    }   
+    }
 
     function shuffle() {
         completed = false;
